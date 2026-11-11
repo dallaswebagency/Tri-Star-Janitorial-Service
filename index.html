@@ -73,7 +73,8 @@ nav a:hover:after,nav a.on:after{width:100%}
 .hero p.lead{font-size:19px;max-width:520px;margin:28px 0 36px;color:#3a434d}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
 .hero-media{position:relative;min-height:560px}
-.hero-media .frame{position:absolute;inset:0 -12vw 0 0;clip-path:polygon(70px 0,100% 0,100% 100%,0 100%,0 70px);overflow:hidden}
+.hero-media .frame{position:absolute;inset:0 -12vw 0 0;overflow:hidden}
+.hero-media:after{content:"";position:absolute;top:-14px;bottom:-14px;left:-14px;width:40px;pointer-events:none;z-index:3;background:linear-gradient(var(--blue),var(--blue)) 0 0/28px 2px,linear-gradient(var(--blue),var(--blue)) 0 0/2px 28px,linear-gradient(var(--blue),var(--blue)) 0 100%/28px 2px,linear-gradient(var(--blue),var(--blue)) 0 100%/2px 28px;background-repeat:no-repeat}
 .hero-media img{width:100%;height:100%;object-fit:cover;object-position:62% center}
 .ticket{position:absolute;left:-36px;bottom:42px;background:var(--ink);color:#fff;padding:22px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 20px 40px rgba(15,23,41,.25)}
 .ticket strong{font-stretch:72%;font-weight:850;font-size:52px;line-height:1;color:#7E9BFF}
@@ -84,6 +85,16 @@ nav a:hover:after,nav a.on:after{width:100%}
 .specs li:first-child{border-left:1px solid var(--line)}
 .specs li .mono{color:var(--steel);font-size:11px}
 .specs li b{font-size:17px;color:var(--ink)}
+
+
+/* crop-mark corners (site-wide image treatment) */
+.marks{position:relative;--c:var(--blue);overflow:visible!important}
+.marks:after{content:"";position:absolute;inset:-14px;pointer-events:none;z-index:3;background:
+ linear-gradient(var(--c),var(--c)) 0 0/28px 2px,linear-gradient(var(--c),var(--c)) 0 0/2px 28px,
+ linear-gradient(var(--c),var(--c)) 100% 0/28px 2px,linear-gradient(var(--c),var(--c)) 100% 0/2px 28px,
+ linear-gradient(var(--c),var(--c)) 0 100%/28px 2px,linear-gradient(var(--c),var(--c)) 0 100%/2px 28px,
+ linear-gradient(var(--c),var(--c)) 100% 100%/28px 2px,linear-gradient(var(--c),var(--c)) 100% 100%/2px 28px;background-repeat:no-repeat}
+.pj .marks:after{opacity:0;transition:.3s}.pj:hover .marks:after{opacity:1}
 
 /* section heads */
 section{position:relative}
@@ -107,10 +118,10 @@ section{position:relative}
 .row.act .ar,.row:hover .ar{background:var(--blue);border-color:var(--blue);color:#fff}
 .badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:var(--blue);color:#fff;padding:3px 8px;font-stretch:100%;font-weight:500}
 .dir-view{position:sticky;top:110px}
-.dir-view .pic{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--ink);clip-path:polygon(0 0,calc(100% - 60px) 0,100% 60px,100% 100%,0 100%)}
-.dir-view img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .45s,transform .9s}
-.dir-view img.on{opacity:1;transform:scale(1)}
-.dir-cap{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.dir-view .pic{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--ink)}
+.dir-view img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s}
+.dir-view img.on{opacity:1}
+.dir-cap{margin-top:16px;display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
 .dir-cap b{font-size:18px;color:var(--ink)}
 .dir-foot{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
 
@@ -129,7 +140,8 @@ section{position:relative}
 .about .big{position:absolute;right:-30px;top:40px;font-stretch:62%;font-weight:900;font-size:clamp(220px,30vw,440px);line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(126,155,255,.28);pointer-events:none}
 .ab-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center;position:relative}
 .ab-img{position:relative}
-.ab-img .pic{aspect-ratio:4/5;overflow:hidden;clip-path:polygon(0 0,100% 0,100% calc(100% - 70px),calc(100% - 70px) 100%,0 100%)}
+.ab-img .pic{aspect-ratio:4/5;overflow:hidden}
+.about .marks{--c:#7E9BFF}
 .ab-img img{width:100%;height:100%;object-fit:cover}
 .ab-img .yrs{position:absolute;top:-26px;right:-26px;background:var(--blue);padding:22px 24px;text-align:left}
 .ab-img .yrs b{display:block;font-stretch:70%;font-weight:900;font-size:58px;line-height:.9}
@@ -145,37 +157,74 @@ section{position:relative}
 .link{display:inline-flex;gap:10px;align-items:center;font-weight:700;border-bottom:2px solid currentColor;padding-bottom:4px}
 .link svg{width:16px;transition:.2s}.link:hover svg{transform:translateX(4px)}
 
-/* why ledger */
-.ledger{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink)}
-.led{padding:40px 32px 44px 0;border-bottom:1px solid var(--line);position:relative}
-.led+.led{padding-left:32px;border-left:1px solid var(--line)}
-.led:nth-child(4){padding-left:0;border-left:0}
-.led .ic{width:52px;height:52px;background:var(--blue-l);color:var(--blue);display:grid;place-items:center;margin-bottom:26px}
-.led .ic svg{width:26px;height:26px}
-.led h3{font-size:22px;font-stretch:88%;font-weight:750;color:var(--ink);margin-bottom:8px}
-.led p{color:#555e68;font-size:16px}
-.led .mono{position:absolute;top:44px;right:28px;color:var(--steel)}
+/* why bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,minmax(230px,auto)) auto;gap:16px}
+.bx{position:relative;padding:30px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;background:#fff;transition:transform .35s}
+.bx:hover{transform:translateY(-4px)}
+.bx h3{font-size:24px;font-stretch:85%;font-weight:800;line-height:1.1;margin-bottom:8px}
+.bx p{font-size:15.5px;line-height:1.55}
+.bx .ic{width:46px;height:46px;display:grid;place-items:center;border:1.5px solid currentColor}
+.bx .ic svg{width:22px;height:22px}
+.bx .big{font-stretch:62%;font-weight:900;line-height:.8;letter-spacing:-.02em}
+.b-photo{grid-column:span 2;grid-row:span 2;padding:0;color:#fff;justify-content:flex-end}
+.b-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s}
+.b-photo:hover img{transform:scale(1.04)}
+.b-photo:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,16,32,.92));z-index:1}
+.b-photo .in{position:relative;z-index:2;padding:34px;max-width:440px}
+.b-photo h3{font-size:34px}
+.b-photo p{color:rgba(255,255,255,.8)}
+.b-photo .chip{position:absolute;top:22px;left:22px;z-index:2;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);padding:8px 12px;color:#fff}
+.b-blue{background:var(--blue);color:#fff}
+.b-blue p{color:rgba(255,255,255,.85)}
+.b-blue .big{font-size:84px}
+.b-white{color:var(--ink)}
+.b-white p{color:#555e68}
+.b-white .ic{color:var(--blue)}
+.b-ink{background:var(--ink);color:#fff}
+.b-ink p{color:rgba(255,255,255,.7)}
+.b-ink .big{font-size:96px;color:transparent;-webkit-text-stroke:1.5px #7E9BFF}
+.b-wide{grid-column:span 4;flex-direction:row;align-items:center;gap:40px;background:var(--blue-l);min-height:0;padding:30px 34px}
+.b-wide .ic{color:var(--blue);flex:none;width:64px;height:64px}
+.b-wide .ic svg{width:30px;height:30px}
+.b-wide h3{color:var(--ink);font-size:28px;margin:0;flex:none;min-width:260px}
+.b-wide p{color:#3a434d;font-size:17px;flex:1}
+.b-wide .eq{display:flex;gap:6px;align-items:flex-end;height:50px;flex:none}
+.b-wide .eq i{width:8px;background:var(--blue);display:block;animation:eq 1.6s ease-in-out infinite}
+.b-wide .eq i:nth-child(2){animation-delay:.2s}.b-wide .eq i:nth-child(3){animation-delay:.4s}.b-wide .eq i:nth-child(4){animation-delay:.6s}.b-wide .eq i:nth-child(5){animation-delay:.8s}
+@keyframes eq{0%,100%{height:30%}50%{height:100%}}
+.b-green{background:#fff;color:var(--ink)}
+.b-green p{color:#555e68}
+.b-green .leafbg{position:absolute;right:-30px;bottom:-40px;width:170px;height:170px;color:var(--blue-l)}
 
-/* process */
-.proc{background:var(--white)}
-.track{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin-top:10px}
-.track:before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:repeating-linear-gradient(90deg,var(--blue) 0 10px,transparent 10px 18px)}
-.st{padding-right:34px;position:relative}
-.st .dot{width:56px;height:56px;background:var(--paper);border:2px solid var(--blue);display:grid;place-items:center;font-family:var(--mono);font-weight:500;color:var(--blue);position:relative;transform:rotate(45deg);margin-bottom:34px}
-.st .dot span{transform:rotate(-45deg)}
-.st:first-child .dot{background:var(--blue);color:#fff}
-.st h3{font-size:22px;font-stretch:88%;font-weight:750;color:var(--ink);margin-bottom:8px}
-.st p{font-size:16px;color:#555e68}
+/* process: ascending stairs */
+.proc{background:var(--white);overflow:hidden}
+.stairs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end;margin-top:20px}
+.sc{position:relative;padding:30px 28px 32px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .35s}
+.sc:hover{transform:translateY(-8px)}
+.sc:nth-child(1){height:330px;background:var(--blue-l);color:var(--ink)}
+.sc:nth-child(2){height:390px;background:#B9C8F6;color:var(--ink)}
+.sc:nth-child(3){height:450px;background:var(--blue);color:#fff;--sk:#fff}
+.sc:nth-child(4){height:510px;background:var(--ink);color:#fff;--sk:#7E9BFF}
+.sc .num{font-stretch:62%;font-weight:900;font-size:110px;line-height:.75;letter-spacing:-.03em;color:transparent;-webkit-text-stroke:1.5px var(--sk,var(--ink));opacity:.6}
+.sc .lab{position:absolute;top:30px;right:28px;opacity:.7}
+.sc h3{font-size:25px;font-stretch:85%;font-weight:800;line-height:1.1;margin-bottom:10px}
+.sc p{font-size:15.5px;opacity:.82}
+.sc:nth-child(4) .done{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;color:#7E9BFF}
+.sc .done svg{width:18px}
+.stairs-base{height:2px;background:var(--ink);margin-top:0}
+.stairs-foot{display:flex;justify-content:space-between;color:var(--steel);padding-top:14px}
 
 /* projects */
 .proj-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:34px;align-items:start}
 .pj{display:block}
-.pj .pic{overflow:hidden;position:relative}
+.pj .pic{position:relative}
+
+.pj .clip{overflow:hidden;height:100%}
 .pj:first-child .pic{aspect-ratio:4/3}
 .pj:last-child{margin-top:120px}
 .pj:last-child .pic{aspect-ratio:4/5}
 .pj img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
-.pj:hover img{transform:scale(1.05)}
+.pj:hover img{filter:brightness(1.06)}
 .pj .chip{position:absolute;top:0;left:0;background:var(--blue);color:#fff;padding:9px 14px}
 .pj .meta{display:flex;justify-content:space-between;align-items:flex-end;padding:22px 0;border-bottom:1px solid var(--line)}
 .pj h3{font-size:30px;font-stretch:80%;font-weight:800;text-transform:uppercase;color:var(--ink);line-height:1}
@@ -210,7 +259,7 @@ section{position:relative}
 .contact-list a,.contact-list div{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.15)}
 .contact-list .mono{color:rgba(255,255,255,.55)}
 .contact-list b{font-size:22px;font-stretch:85%}
-form{background:var(--white);color:var(--char);padding:42px;clip-path:polygon(0 0,calc(100% - 46px) 0,100% 46px,100% 100%,0 100%)}
+form{background:var(--white);color:var(--char);padding:42px;border-top:6px solid var(--blue)}
 form h3{font-size:28px;font-stretch:80%;font-weight:800;text-transform:uppercase;color:var(--ink);margin-bottom:6px}
 form .sub{color:var(--steel);font-size:15px;margin-bottom:26px}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -269,10 +318,13 @@ footer ul a:hover{color:#fff}
   .sos .wrap{grid-template-columns:1fr;gap:20px}
   .sos .clock{font-size:90px}
   .ab-img .yrs{right:0;top:-20px}
-  .ledger{grid-template-columns:1fr}
-  .led,.led+.led{padding:32px 0;border-left:0}
-  .track{grid-template-columns:1fr 1fr;gap:40px 0}
-  .track:before{display:none}
+  .bento{grid-template-columns:1fr 1fr}
+  .b-photo{grid-column:span 2;min-height:420px}
+  .b-wide{grid-column:span 2;flex-wrap:wrap;gap:16px}
+  .b-wide h3{min-width:0}
+  .stairs{grid-template-columns:1fr 1fr}
+  .sc:nth-child(n){height:auto;min-height:300px}
+  .marks:after{inset:-8px}
   .pj:last-child{margin-top:0}
   .ft{grid-template-columns:1fr 1fr}
   .sec{padding:84px 0}
@@ -282,7 +334,9 @@ footer ul a:hover{color:#fff}
   .h-cta .btn{display:none}
   .specs ul{grid-template-columns:1fr 1fr}
   .specs li{border-left:1px solid var(--line)}
-  .track{grid-template-columns:1fr}
+  .stairs,.bento{grid-template-columns:1fr}
+  .b-photo,.b-wide{grid-column:span 1}
+  .sc:nth-child(n){min-height:250px}
   .f2{grid-template-columns:1fr}
   form{padding:30px 22px}
   .ft{grid-template-columns:1fr}
@@ -415,7 +469,7 @@ footer ul a:hover{color:#fff}
       </div>
 
       <aside class="dir-view">
-        <div class="pic" id="pic">
+        <div class="pic marks" id="pic">
           <img class="on" src="images/svc-commercial.jpg" alt="Commercial / General Cleaning">
           <img src="images/svc-carpet.jpg" alt="Carpet & Upholstery Cleaning">
           <img src="images/svc-floor.jpg" alt="Floor Care & Restoration">
@@ -448,7 +502,7 @@ footer ul a:hover{color:#fff}
   <div class="big">30+</div>
   <div class="wrap ab-grid">
     <div class="ab-img rv">
-      <div class="pic"><img src="images/about-crew.jpg" alt="Tri-Star cleaning crew at work"></div>
+      <div class="pic marks"><img src="images/about-crew.jpg" alt="Tri-Star cleaning crew at work"></div>
       <div class="yrs"><b>30+</b><span>Years of Experience in Calgary</span></div>
     </div>
     <div class="rv">
@@ -472,13 +526,35 @@ footer ul a:hover{color:#fff}
       <div><div class="tag mono">Our Advantages</div><h2 class="display">Why Choose Tri-Star?</h2></div>
       <p>We go beyond just cleaning. We provide peace of mind through professional management and consistent results.</p>
     </div>
-    <div class="ledger rv">
-      <div class="led"><span class="mono">A</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M17 11l2 2 4-4"/></svg></div><h3>Experienced Team</h3><p>Professionally trained, background-checked staff dedicated to excellence.</p></div>
-      <div class="led"><span class="mono">B</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></div><h3>Guaranteed Service</h3><p>If you're not 100% satisfied, we'll make it right. No questions asked.</p></div>
-      <div class="led"><span class="mono">C</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17"/><path d="M3 9h18M8 2v4M16 2v4M8 14h3v3H8z"/></svg></div><h3>Flexible Scheduling</h3><p>We work around your business hours to minimize disruption.</p></div>
-      <div class="led"><span class="mono">D</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 19c0-9 6-14 15-15-1 9-6 15-15 15z"/><path d="M5 19 13 11"/></svg></div><h3>Green Cleaning</h3><p>Eco-friendly, non-toxic products safe for staff, customers, and the environment.</p></div>
-      <div class="led"><span class="mono">E</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg></div><h3>Emergency Response</h3><p>Restoration teams on standby 24/7 for floods, fires, and bio-hazards.</p></div>
-      <div class="led"><span class="mono">F</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div><h3>Advanced Equipment</h3><p>Commercial-grade technology that delivers superior, lasting results.</p></div>
+    <div class="bento rv">
+      <div class="bx b-photo">
+        <img src="images/svc-commercial.jpg" alt="Tri-Star technician cleaning a Calgary boardroom">
+        <span class="chip mono">01 / Experienced Team</span>
+        <div class="in"><h3>Experienced Team</h3><p>Professionally trained, background-checked staff dedicated to excellence.</p></div>
+      </div>
+      <div class="bx b-blue">
+        <div class="big">100%</div>
+        <div><h3>Guaranteed Service</h3><p>If you're not 100% satisfied, we'll make it right. No questions asked.</p></div>
+      </div>
+      <div class="bx b-white">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17"/><path d="M3 9h18M8 2v4M16 2v4M8 14h3v3H8z"/></svg></span>
+        <div><h3>Flexible Scheduling</h3><p>We work around your business hours to minimize disruption.</p></div>
+      </div>
+      <div class="bx b-green">
+        <svg class="leafbg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 19c0-9 6-14 15-15-1 9-6 15-15 15z"/></svg>
+        <span class="ic" style="color:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 19c0-9 6-14 15-15-1 9-6 15-15 15z"/><path d="M5 19 13 11"/></svg></span>
+        <div style="position:relative"><h3>Green Cleaning</h3><p>Eco-friendly, non-toxic products safe for staff, customers, and the environment.</p></div>
+      </div>
+      <div class="bx b-ink">
+        <div class="big">24/7</div>
+        <div><h3>Emergency Response</h3><p>Restoration teams on standby 24/7 for floods, fires, and bio-hazards.</p></div>
+      </div>
+      <div class="bx b-wide">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></span>
+        <h3>Advanced Equipment</h3>
+        <p>Commercial-grade technology that delivers superior, lasting results.</p>
+        <span class="eq"><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
     </div>
   </div>
 </section>
@@ -490,12 +566,14 @@ footer ul a:hover{color:#fff}
       <div><div class="tag mono">How It Works</div><h2 class="display">A Simple Process for a Cleaner Space</h2></div>
       <p>Four steps from your first message to a clean, ready facility.</p>
     </div>
-    <div class="track rv">
-      <div class="st"><div class="dot"><span>01</span></div><h3>Request a Quote</h3><p>Tell us about your space and cleaning needs through our simple online form.</p></div>
-      <div class="st"><div class="dot"><span>02</span></div><h3>We Review Your Needs</h3><p>Our team analyzes your requirements to provide an accurate, competitive quote.</p></div>
-      <div class="st"><div class="dot"><span>03</span></div><h3>Book an Estimate</h3><p>Schedule a free onsite walkthrough to finalize details and pricing.</p></div>
-      <div class="st"><div class="dot"><span>04</span></div><h3>We Deliver Service</h3><p>Our professional team arrives on schedule to deliver exceptional results.</p></div>
+    <div class="stairs rv">
+      <div class="sc"><span class="mono lab">Step</span><div class="num">01</div><div><h3>Request a Quote</h3><p>Tell us about your space and cleaning needs through our simple online form.</p></div></div>
+      <div class="sc"><span class="mono lab">Step</span><div class="num">02</div><div><h3>We Review Your Needs</h3><p>Our team analyzes your requirements to provide an accurate, competitive quote.</p></div></div>
+      <div class="sc"><span class="mono lab">Step</span><div class="num">03</div><div><h3>Book an Estimate</h3><p>Schedule a free onsite walkthrough to finalize details and pricing.</p></div></div>
+      <div class="sc"><span class="mono lab">Step</span><div class="num">04</div><div><span class="done mono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>Clean space</span><h3>We Deliver Service</h3><p>Our professional team arrives on schedule to deliver exceptional results.</p></div></div>
     </div>
+    <div class="stairs-base"></div>
+    <div class="stairs-foot mono"><span>Start</span><a href="#estimate" style="color:var(--blue)">Request a Quote →</a></div>
   </div>
 </section>
 
@@ -508,11 +586,11 @@ footer ul a:hover{color:#fff}
     </div>
     <div class="proj-grid">
       <a href="/latest-work" class="pj rv">
-        <div class="pic"><img src="images/project-jobsite.jpg" alt="Jobsite Cleanup, Jacksonport"><span class="chip mono">Construction Cleanup</span></div>
+        <div class="pic marks"><img src="images/project-jobsite.jpg" alt="Jobsite Cleanup, Jacksonport"><span class="chip mono">Construction Cleanup</span></div>
         <div class="meta"><div><h3>Jobsite Cleanup</h3><div class="loc mono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Jacksonport</div></div><span class="go">View Project Details →</span></div>
       </a>
       <a href="/latest-work" class="pj rv">
-        <div class="pic"><img src="images/project-carpet.jpg" alt="Commercial Carpet Clean, Chinook Center"><span class="chip mono">Carpet Cleaning</span></div>
+        <div class="pic marks"><img src="images/project-carpet.jpg" alt="Commercial Carpet Clean, Chinook Center"><span class="chip mono">Carpet Cleaning</span></div>
         <div class="meta"><div><h3>Commercial Carpet Clean</h3><div class="loc mono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Chinook Center</div></div><span class="go">View Project Details →</span></div>
       </a>
     </div>
