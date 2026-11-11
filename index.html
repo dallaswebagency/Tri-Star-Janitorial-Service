@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tri-Star Janitorial Service | Calgary's Cleaning Experts</title>
+<meta name="description" content="Over 30 years of excellence in janitorial, commercial cleaning, and 24/7 emergency restoration in Calgary. Locally owned, insured, and bonded.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#3B63E0;
+  --blue-d:#2A4FC4;
+  --blue-l:#E3E9FB;
+  --ink:#0F1729;
+  --char:#1F262E;
+  --steel:#67737E;
+  --paper:#F2F0EB;
+  --line:rgba(15,23,41,.14);
+  --white:#fff;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --sans:'Archivo',system-ui,sans-serif;
+  --wrap:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--char);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
+.display{font-stretch:72%;font-weight:850;text-transform:uppercase;line-height:.92;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15px;padding:16px 26px;border:2px solid transparent;transition:.2s;cursor:pointer;font-family:var(--sans)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-d)}
+.btn-line{border-color:var(--ink);color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn svg{width:18px;height:18px}
+
+/* utility */
+.util{background:var(--ink);color:rgba(255,255,255,.75)}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;height:40px;gap:20px}
+.util b{color:#fff;font-weight:500}
+.pulse{display:inline-block;width:8px;height:8px;background:#5B85FF;border-radius:50%;margin-right:10px;box-shadow:0 0 0 0 rgba(91,133,255,.7);animation:p 2s infinite}
+@keyframes p{70%{box-shadow:0 0 0 9px rgba(91,133,255,0)}100%{box-shadow:0 0 0 0 rgba(91,133,255,0)}}
+
+/* header */
+header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:82px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo .l1{font-weight:900;font-size:27px;letter-spacing:-.02em;color:var(--ink)}
+.logo .l2{font-size:9.5px;font-weight:700;letter-spacing:.27em;color:var(--steel);margin-top:5px}
+nav ul{display:flex;gap:34px;list-style:none}
+nav a{font-weight:600;font-size:15px;position:relative;padding:6px 0}
+nav a:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--blue);transition:.25s}
+nav a:hover:after,nav a.on:after{width:100%}
+.h-cta{display:flex;align-items:center;gap:22px}
+.h-phone{font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px}
+.h-phone svg{width:16px;color:var(--blue)}
+.h-cta .btn{padding:13px 20px}
+.burger{display:none;background:none;border:0;width:42px;height:42px;cursor:pointer}
+.burger span{display:block;height:2px;background:var(--ink);margin:6px 8px}
+
+/* hero */
+.hero{padding:64px 0 0;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:stretch}
+.hero-copy{padding:20px 0 70px}
+.tag{display:inline-flex;align-items:center;gap:12px;color:var(--blue);margin-bottom:26px}
+.tag:before{content:"";width:34px;height:2px;background:var(--blue)}
+.hero h1{font-size:clamp(40px,6.6vw,96px);color:var(--ink)}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero p.lead{font-size:19px;max-width:520px;margin:28px 0 36px;color:#3a434d}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.hero-media{position:relative;min-height:560px}
+.hero-media .frame{position:absolute;inset:0 -12vw 0 0;clip-path:polygon(70px 0,100% 0,100% 100%,0 100%,0 70px);overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:62% center}
+.ticket{position:absolute;left:-36px;bottom:42px;background:var(--ink);color:#fff;padding:22px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 20px 40px rgba(15,23,41,.25)}
+.ticket strong{font-stretch:72%;font-weight:850;font-size:52px;line-height:1;color:#7E9BFF}
+.ticket span{font-size:14px;line-height:1.35;max-width:130px;color:rgba(255,255,255,.8)}
+.specs{background:var(--white);border-top:1px solid var(--line);position:relative;z-index:2}
+.specs ul{list-style:none;display:grid;grid-template-columns:repeat(5,1fr)}
+.specs li{padding:24px 22px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.specs li:first-child{border-left:1px solid var(--line)}
+.specs li .mono{color:var(--steel);font-size:11px}
+.specs li b{font-size:17px;color:var(--ink)}
+
+/* section heads */
+section{position:relative}
+.sec{padding:120px 0}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:60px}
+.sh h2{font-size:clamp(40px,4.8vw,68px);color:var(--ink)}
+.sh p{color:#4a535d;max-width:470px}
+
+/* services directory */
+.dir{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+.grp{margin-bottom:8px}
+.grp-h{display:flex;justify-content:space-between;padding:0 0 12px;color:var(--steel);border-bottom:2px solid var(--ink)}
+.row{display:grid;grid-template-columns:58px 1fr 34px;gap:18px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line);transition:.25s;cursor:pointer}
+.row .n{font-family:var(--mono);font-size:13px;color:var(--steel)}
+.row h3{font-size:24px;font-weight:750;font-stretch:88%;color:var(--ink);line-height:1.15;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.row p{font-size:15px;color:#555e68;margin-top:4px;max-height:0;opacity:0;overflow:hidden;transition:.35s}
+.row .ar{width:34px;height:34px;border:1.5px solid var(--line);display:grid;place-items:center;transition:.25s}
+.row .ar svg{width:14px}
+.row:hover,.row.act{padding-left:14px;background:linear-gradient(90deg,var(--blue-l),transparent)}
+.row.act p,.row:hover p{max-height:80px;opacity:1}
+.row.act .ar,.row:hover .ar{background:var(--blue);border-color:var(--blue);color:#fff}
+.badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:var(--blue);color:#fff;padding:3px 8px;font-stretch:100%;font-weight:500}
+.dir-view{position:sticky;top:110px}
+.dir-view .pic{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--ink);clip-path:polygon(0 0,calc(100% - 60px) 0,100% 60px,100% 100%,0 100%)}
+.dir-view img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .45s,transform .9s}
+.dir-view img.on{opacity:1;transform:scale(1)}
+.dir-cap{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.dir-cap b{font-size:18px;color:var(--ink)}
+.dir-foot{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+
+/* emergency band */
+.sos{background:var(--blue);color:#fff;overflow:hidden}
+.sos:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.06) 0 14px,transparent 14px 28px)}
+.sos .wrap{position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:48px;align-items:center;padding-top:54px;padding-bottom:54px}
+.sos .clock{font-stretch:68%;font-weight:900;font-size:120px;line-height:.8;letter-spacing:-.03em}
+.sos h2{font-size:clamp(28px,3vw,40px);font-stretch:80%;font-weight:800;text-transform:uppercase;line-height:1.05}
+.sos p{opacity:.85;margin-top:10px;max-width:560px}
+.btn-white{background:#fff;color:var(--ink)}
+.btn-white:hover{background:var(--ink);color:#fff}
+
+/* about */
+.about{background:var(--ink);color:#fff;overflow:hidden}
+.about .big{position:absolute;right:-30px;top:40px;font-stretch:62%;font-weight:900;font-size:clamp(220px,30vw,440px);line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(126,155,255,.28);pointer-events:none}
+.ab-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center;position:relative}
+.ab-img{position:relative}
+.ab-img .pic{aspect-ratio:4/5;overflow:hidden;clip-path:polygon(0 0,100% 0,100% calc(100% - 70px),calc(100% - 70px) 100%,0 100%)}
+.ab-img img{width:100%;height:100%;object-fit:cover}
+.ab-img .yrs{position:absolute;top:-26px;right:-26px;background:var(--blue);padding:22px 24px;text-align:left}
+.ab-img .yrs b{display:block;font-stretch:70%;font-weight:900;font-size:58px;line-height:.9}
+.ab-img .yrs span{font-size:13px;display:block;max-width:120px;line-height:1.3;margin-top:6px}
+.about .tag{color:#7E9BFF}.about .tag:before{background:#7E9BFF}
+.about h2{font-size:clamp(38px,4.4vw,62px)}
+.about p{color:rgba(255,255,255,.72);margin-top:22px;max-width:560px}
+.ab-stats{display:flex;gap:0;margin:40px 0;border-top:1px solid rgba(255,255,255,.15)}
+.ab-stats div{flex:1;padding:24px 0;border-right:1px solid rgba(255,255,255,.15)}
+.ab-stats div+div{padding-left:28px;border-right:0}
+.ab-stats b{display:block;font-stretch:72%;font-weight:850;font-size:54px;line-height:1;color:#fff}
+.ab-stats span{color:rgba(255,255,255,.6);font-size:14px}
+.link{display:inline-flex;gap:10px;align-items:center;font-weight:700;border-bottom:2px solid currentColor;padding-bottom:4px}
+.link svg{width:16px;transition:.2s}.link:hover svg{transform:translateX(4px)}
+
+/* why ledger */
+.ledger{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink)}
+.led{padding:40px 32px 44px 0;border-bottom:1px solid var(--line);position:relative}
+.led+.led{padding-left:32px;border-left:1px solid var(--line)}
+.led:nth-child(4){padding-left:0;border-left:0}
+.led .ic{width:52px;height:52px;background:var(--blue-l);color:var(--blue);display:grid;place-items:center;margin-bottom:26px}
+.led .ic svg{width:26px;height:26px}
+.led h3{font-size:22px;font-stretch:88%;font-weight:750;color:var(--ink);margin-bottom:8px}
+.led p{color:#555e68;font-size:16px}
+.led .mono{position:absolute;top:44px;right:28px;color:var(--steel)}
+
+/* process */
+.proc{background:var(--white)}
+.track{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin-top:10px}
+.track:before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:repeating-linear-gradient(90deg,var(--blue) 0 10px,transparent 10px 18px)}
+.st{padding-right:34px;position:relative}
+.st .dot{width:56px;height:56px;background:var(--paper);border:2px solid var(--blue);display:grid;place-items:center;font-family:var(--mono);font-weight:500;color:var(--blue);position:relative;transform:rotate(45deg);margin-bottom:34px}
+.st .dot span{transform:rotate(-45deg)}
+.st:first-child .dot{background:var(--blue);color:#fff}
+.st h3{font-size:22px;font-stretch:88%;font-weight:750;color:var(--ink);margin-bottom:8px}
+.st p{font-size:16px;color:#555e68}
+
+/* projects */
+.proj-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:34px;align-items:start}
+.pj{display:block}
+.pj .pic{overflow:hidden;position:relative}
+.pj:first-child .pic{aspect-ratio:4/3}
+.pj:last-child{margin-top:120px}
+.pj:last-child .pic{aspect-ratio:4/5}
+.pj img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.pj:hover img{transform:scale(1.05)}
+.pj .chip{position:absolute;top:0;left:0;background:var(--blue);color:#fff;padding:9px 14px}
+.pj .meta{display:flex;justify-content:space-between;align-items:flex-end;padding:22px 0;border-bottom:1px solid var(--line)}
+.pj h3{font-size:30px;font-stretch:80%;font-weight:800;text-transform:uppercase;color:var(--ink);line-height:1}
+.pj .loc{color:var(--steel);margin-top:8px;display:flex;align-items:center;gap:6px}
+.pj .loc svg{width:14px}
+.pj .go{font-weight:700;font-size:14px;color:var(--blue);white-space:nowrap}
+
+/* testimonials */
+.tst{background:var(--blue-l)}
+.tst-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px}
+.feat q{display:block;font-size:clamp(28px,2.9vw,40px);font-stretch:85%;font-weight:650;line-height:1.22;color:var(--ink);quotes:none}
+.qm{font-stretch:62%;font-weight:900;font-size:150px;line-height:.6;color:var(--blue);height:70px}
+.who{margin-top:28px;display:flex;align-items:center;gap:14px}
+.who .ini{width:46px;height:46px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px}
+.who b{display:block;color:var(--ink)}
+.who span{color:var(--steel);font-size:14px}
+.stack{display:flex;flex-direction:column}
+.mini{padding:28px 0;border-top:1px solid rgba(15,23,41,.18)}
+.mini:last-child{border-bottom:1px solid rgba(15,23,41,.18)}
+.mini p{color:#2d3640;font-size:16.5px}
+.mini .who{margin-top:16px}
+.mini .ini{width:36px;height:36px;font-size:12px;background:var(--blue)}
+.stars{color:var(--blue);letter-spacing:3px;font-size:15px;margin-bottom:10px}
+
+/* estimate */
+.est{background:var(--ink);color:#fff}
+.est-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.est h2{font-size:clamp(40px,4.6vw,66px)}
+.est .tag{color:#7E9BFF}.est .tag:before{background:#7E9BFF}
+.est p.lead{color:rgba(255,255,255,.72);margin:24px 0 40px;max-width:470px}
+.contact-list{border-top:1px solid rgba(255,255,255,.15)}
+.contact-list a,.contact-list div{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+.contact-list .mono{color:rgba(255,255,255,.55)}
+.contact-list b{font-size:22px;font-stretch:85%}
+form{background:var(--white);color:var(--char);padding:42px;clip-path:polygon(0 0,calc(100% - 46px) 0,100% 46px,100% 100%,0 100%)}
+form h3{font-size:28px;font-stretch:80%;font-weight:800;text-transform:uppercase;color:var(--ink);margin-bottom:6px}
+form .sub{color:var(--steel);font-size:15px;margin-bottom:26px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fld{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.fld label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)}
+.fld input,.fld select,.fld textarea{font:inherit;font-size:16px;padding:13px 14px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);outline:none;transition:.2s;border-radius:0}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--blue);background:#fff}
+.fld textarea{min-height:110px;resize:vertical}
+form .btn{width:100%;justify-content:center;margin-top:6px}
+
+/* footer */
+footer{background:#0A1020;color:rgba(255,255,255,.65);padding-top:90px;overflow:hidden;position:relative}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1.2fr;gap:50px;padding-bottom:60px}
+footer .logo .l1{color:#fff}
+footer .logo .l2{color:rgba(255,255,255,.5)}
+footer p{font-size:15px;margin-top:22px;max-width:320px}
+footer h4{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.1em;color:#fff;margin-bottom:20px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:11px;font-size:15px}
+footer ul a:hover{color:#fff}
+.fc b{display:block;color:#fff;font-size:20px;margin:4px 0 18px}
+.fc .mono{font-size:11px}
+.giant{font-stretch:62%;font-weight:900;font-size:21vw;line-height:.72;color:rgba(255,255,255,.04);text-align:center;letter-spacing:-.02em;user-select:none;margin-bottom:-2.4vw}
+.fb{border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:24px 0;font-size:14px;position:relative;z-index:1}
+.fb a:hover{color:#fff}
+.fb .credit a{color:#fff;font-weight:600}
+.fb .legal{display:flex;gap:24px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+
+/* responsive */
+@media(max-width:1100px){
+  nav,.h-phone{display:none}
+  .burger{display:block}
+  nav.open{display:block;position:absolute;top:82px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);padding:16px 28px 26px}
+  nav.open ul{flex-direction:column;gap:14px}
+  .specs ul{grid-template-columns:repeat(3,1fr)}
+  .specs li:nth-child(4){border-left:1px solid var(--line)}
+  .specs li{border-bottom:1px solid var(--line)}
+}
+@media(max-width:900px){
+  .hero-grid>*,.dir>*{min-width:0}
+  .hero{padding-top:40px}
+  .row{grid-template-columns:34px 1fr 34px;gap:12px}
+  .row:hover,.row.act{padding-left:0}
+  body{overflow-x:hidden}
+  .hero-grid,.sh,.dir,.ab-grid,.tst-grid,.est-grid,.proj-grid{grid-template-columns:1fr}
+  .sh{gap:18px}
+  .hero-copy{padding-bottom:20px}
+  .hero-media{min-height:380px}
+  .hero-media .frame{inset:0 -28px 0 0}
+  .ticket{left:0;bottom:0}
+  .dir-view{display:none}
+  .row p{max-height:none;opacity:1}
+  .sos .wrap{grid-template-columns:1fr;gap:20px}
+  .sos .clock{font-size:90px}
+  .ab-img .yrs{right:0;top:-20px}
+  .ledger{grid-template-columns:1fr}
+  .led,.led+.led{padding:32px 0;border-left:0}
+  .track{grid-template-columns:1fr 1fr;gap:40px 0}
+  .track:before{display:none}
+  .pj:last-child{margin-top:0}
+  .ft{grid-template-columns:1fr 1fr}
+  .sec{padding:84px 0}
+}
+@media(max-width:600px){
+  .util .wrap>span:last-child{display:none}
+  .h-cta .btn{display:none}
+  .specs ul{grid-template-columns:1fr 1fr}
+  .specs li{border-left:1px solid var(--line)}
+  .track{grid-template-columns:1fr}
+  .f2{grid-template-columns:1fr}
+  form{padding:30px 22px}
+  .ft{grid-template-columns:1fr}
+  .about .big{display:none}
+  .fb{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap mono">
+    <span><i class="pulse"></i><b>24/7 Emergency Restoration</b>&nbsp; · One-hour onsite response</span>
+    <span>Calgary &amp; Surrounding Areas &nbsp;·&nbsp; <a href="tel:4036803744"><b>(403) 680-3744</b></a></span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="Tri-Star Janitorial Service home">
+      <span class="l1">TRI-STAR</span>
+      <span class="l2">JANITORIAL SERVICE</span>
+    </a>
+    <nav id="nav">
+      <ul>
+        <li><a href="/" class="on">Home</a></li>
+        <li><a href="/latest-work">Our Latest Work</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="h-cta">
+      <a href="tel:4036803744" class="h-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call Now</a>
+      <a href="#estimate" class="btn btn-blue">Request a Quote</a>
+      <button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="tag mono">30+ Years of Excellence in Calgary</div>
+      <h1 class="display">Professional Cleaning &amp; <em>Restoration</em> You Can Count On</h1>
+      <p class="lead">Providing premium janitorial, commercial cleaning, and 24/7 emergency restoration services for Calgary and surrounding areas. Locally owned, family-operated, and fully insured for over three decades.</p>
+      <div class="hero-btns">
+        <a href="#estimate" class="btn btn-blue">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="tel:4036803744" class="btn btn-line">(403) 680-3744</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="frame"><img src="images/hero-crew.jpg" alt="Tri-Star crew cleaning a Calgary office floor"></div>
+      <div class="ticket"><strong>500+</strong><span>Satisfied Clients in Calgary</span></div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="wrap">
+      <ul>
+        <li><span class="mono">01 / Experience</span><b>30+ Years Experience</b></li>
+        <li><span class="mono">02 / Protection</span><b>Insured &amp; Bonded</b></li>
+        <li><span class="mono">03 / Products</span><b>Eco-Friendly Products</b></li>
+        <li><span class="mono">04 / Availability</span><b>24/7 Emergency</b></li>
+        <li><span class="mono">05 / Ownership</span><b>Locally Owned</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES DIRECTORY -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="tag mono">Our Expertise</div><h2 class="display">Cleaning Solutions for Every Space</h2></div>
+      <p>From high-rise offices to emergency flood restoration, we provide comprehensive cleaning services tailored to your specific needs.</p>
+    </div>
+
+    <div class="dir">
+      <div class="rv">
+        <div class="grp">
+          <div class="grp-h mono"><span>Cleaning &amp; Maintenance</span><span>06</span></div>
+          <a class="row act" href="/services/commercial-cleaning" data-img="0">
+            <span class="n">01</span>
+            <div><h3>Commercial / General Cleaning</h3><p>Comprehensive maintenance for offices, retail, and industrial facilities. Daily, weekly, or custom schedules.</p></div>
+            <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </a>
+          <a class="row" href="/services/carpet-upholstery" data-img="1">
+            <span class="n">02</span>
+            <div><h3>Carpet &amp; Upholstery Cleaning</h3><p>Professional IICRC certified extraction for carpets, furniture, and vehicles using eco-friendly products.</p></div>
+            <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </a>
+          <a class="row" href="/services/floor-care" data-img="2">
+            <span class="n">03</span>
+            <div><h3>Floor Care &amp; Restoration</h3><p>Refinishing, restoration, and maintenance for all hard floor types in commercial environments.</p></div>
+            <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </a>
+          <a class="row" href="/services/epoxy-services" data-img="3">
+            <span class="n">04</span>
+            <div><h3>Epoxy Services</h3><p>Durable, high-performance epoxy flooring solutions for commercial and industrial spaces.</p></div>
+            <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </a>
+          <a class="row" href="/services/construction-cleanup" data-img="4">
+            <span class="n">05</span>
+            <div><h3>Site &amp; Construction Cleanup</h3><p>Post-construction debris removal and professional finishing to get your site ready for occupancy.</p></div>
+            <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </a>
+          <a class="row" href="/services/exterior-maintenance" data-img="5">
+            <span class="n">06</span>
+            <div><h3>Parking Lot &amp; Exterior Maintenance</h3><p>Parking lot cleanup and outdoor property appearance support for commercial properties.</p></div>
+            <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </a>
+        </div>
+        <div class="grp" style="margin-top:46px">
+          <div class="grp-h mono"><span>Restoration</span><span>02</span></div>
+          <a class="row" href="/services/emergency-restoration" data-img="6">
+            <span class="n">07</span>
+            <div><h3>24/7 Emergency Restoration <span class="badge">24/7</span></h3><p>Immediate response for flood, fire, and bio-hazard. One-hour onsite response time guaranteed.</p></div>
+            <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </a>
+          <a class="row" href="/services/drying-systems" data-img="7">
+            <span class="n">08</span>
+            <div><h3>Drying Systems</h3><p>Advanced water mitigation and structural drying support for restoration projects.</p></div>
+            <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </a>
+        </div>
+        <div class="dir-foot">
+          <a href="/services" class="btn btn-line">View All Services</a>
+        </div>
+      </div>
+
+      <aside class="dir-view">
+        <div class="pic" id="pic">
+          <img class="on" src="images/svc-commercial.jpg" alt="Commercial / General Cleaning">
+          <img src="images/svc-carpet.jpg" alt="Carpet & Upholstery Cleaning">
+          <img src="images/svc-floor.jpg" alt="Floor Care & Restoration">
+          <img src="images/svc-epoxy.jpg" alt="Epoxy Services">
+          <img src="images/svc-construction.jpg" alt="Site & Construction Cleanup">
+          <img src="images/svc-exterior.jpg" alt="Parking Lot & Exterior Maintenance">
+          <img src="images/svc-restoration.jpg" alt="24/7 Emergency Restoration">
+          <img src="images/svc-drying.jpg" alt="Drying Systems">
+        </div>
+        <div class="dir-cap"><b id="capt">Commercial / General Cleaning</b><span class="mono" id="capn">01 / 08</span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY BAND -->
+<section class="sos">
+  <div class="wrap">
+    <div class="clock">24/7</div>
+    <div>
+      <h2>Flood, fire or bio-hazard? We're onsite within the hour.</h2>
+      <p>Restoration teams on standby 24/7 for floods, fires, and bio-hazards. Immediate response for Calgary and surrounding areas.</p>
+    </div>
+    <a href="tel:4036803744" class="btn btn-white">Call (403) 680-3744</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec about">
+  <div class="big">30+</div>
+  <div class="wrap ab-grid">
+    <div class="ab-img rv">
+      <div class="pic"><img src="images/about-crew.jpg" alt="Tri-Star cleaning crew at work"></div>
+      <div class="yrs"><b>30+</b><span>Years of Experience in Calgary</span></div>
+    </div>
+    <div class="rv">
+      <div class="tag mono">About Tri-Star</div>
+      <h2 class="display">A Locally Owned Family Business You Can Trust</h2>
+      <p>For over three decades, Tri-Star Janitorial Service has been a pillar of the Calgary business community. We started with a simple mission: to provide reliable, high-quality cleaning services that business owners can depend on.</p>
+      <p>Today, we are a full-service cleaning and restoration company, but our core values remain the same. We treat every facility as if it were our own, ensuring a healthy, clean, and safe environment for your employees and customers.</p>
+      <div class="ab-stats">
+        <div><b>100%</b><span>Satisfaction Guaranteed</span></div>
+        <div><b>24/7</b><span>Emergency Support</span></div>
+      </div>
+      <a href="/about" class="link">More About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="tag mono">Our Advantages</div><h2 class="display">Why Choose Tri-Star?</h2></div>
+      <p>We go beyond just cleaning. We provide peace of mind through professional management and consistent results.</p>
+    </div>
+    <div class="ledger rv">
+      <div class="led"><span class="mono">A</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M17 11l2 2 4-4"/></svg></div><h3>Experienced Team</h3><p>Professionally trained, background-checked staff dedicated to excellence.</p></div>
+      <div class="led"><span class="mono">B</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></div><h3>Guaranteed Service</h3><p>If you're not 100% satisfied, we'll make it right. No questions asked.</p></div>
+      <div class="led"><span class="mono">C</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17"/><path d="M3 9h18M8 2v4M16 2v4M8 14h3v3H8z"/></svg></div><h3>Flexible Scheduling</h3><p>We work around your business hours to minimize disruption.</p></div>
+      <div class="led"><span class="mono">D</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 19c0-9 6-14 15-15-1 9-6 15-15 15z"/><path d="M5 19 13 11"/></svg></div><h3>Green Cleaning</h3><p>Eco-friendly, non-toxic products safe for staff, customers, and the environment.</p></div>
+      <div class="led"><span class="mono">E</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg></div><h3>Emergency Response</h3><p>Restoration teams on standby 24/7 for floods, fires, and bio-hazards.</p></div>
+      <div class="led"><span class="mono">F</span><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div><h3>Advanced Equipment</h3><p>Commercial-grade technology that delivers superior, lasting results.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec proc">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="tag mono">How It Works</div><h2 class="display">A Simple Process for a Cleaner Space</h2></div>
+      <p>Four steps from your first message to a clean, ready facility.</p>
+    </div>
+    <div class="track rv">
+      <div class="st"><div class="dot"><span>01</span></div><h3>Request a Quote</h3><p>Tell us about your space and cleaning needs through our simple online form.</p></div>
+      <div class="st"><div class="dot"><span>02</span></div><h3>We Review Your Needs</h3><p>Our team analyzes your requirements to provide an accurate, competitive quote.</p></div>
+      <div class="st"><div class="dot"><span>03</span></div><h3>Book an Estimate</h3><p>Schedule a free onsite walkthrough to finalize details and pricing.</p></div>
+      <div class="st"><div class="dot"><span>04</span></div><h3>We Deliver Service</h3><p>Our professional team arrives on schedule to deliver exceptional results.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sh rv">
+      <div><div class="tag mono">Recent Projects</div><h2 class="display">See Our Latest Work</h2></div>
+      <div><p>We take pride in every job we do. Here are a few examples of our recent commercial and restoration projects in Calgary.</p><a href="/latest-work" class="link" style="margin-top:22px;color:var(--ink)">View All Projects <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="proj-grid">
+      <a href="/latest-work" class="pj rv">
+        <div class="pic"><img src="images/project-jobsite.jpg" alt="Jobsite Cleanup, Jacksonport"><span class="chip mono">Construction Cleanup</span></div>
+        <div class="meta"><div><h3>Jobsite Cleanup</h3><div class="loc mono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Jacksonport</div></div><span class="go">View Project Details →</span></div>
+      </a>
+      <a href="/latest-work" class="pj rv">
+        <div class="pic"><img src="images/project-carpet.jpg" alt="Commercial Carpet Clean, Chinook Center"><span class="chip mono">Carpet Cleaning</span></div>
+        <div class="meta"><div><h3>Commercial Carpet Clean</h3><div class="loc mono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Chinook Center</div></div><span class="go">View Project Details →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec tst">
+  <div class="wrap">
+    <div class="tag mono rv">Testimonials</div>
+    <div class="tst-grid">
+      <div class="feat rv">
+        <h2 class="display" style="font-size:clamp(38px,4.4vw,62px);color:var(--ink);margin-bottom:46px">What Our Clients Think</h2>
+        <div class="qm">“</div>
+        <q>After a major flood, Tri-Star was onsite within the hour. Their restoration team saved our basement and handled the insurance process seamlessly.</q>
+        <div class="who"><span class="ini">SJ</span><div><b>Sarah Jenkins</b><span>Property Owner</span></div></div>
+      </div>
+      <div class="stack rv">
+        <div class="mini"><div class="stars">★★★★★</div><p>"Tri-Star has been managing our office cleaning for over 5 years. Their attention to detail is unmatched, and they are incredibly responsive to our needs."</p><div class="who"><span class="ini">JS</span><div><b>John Smith</b><span>Facility Manager</span></div></div></div>
+        <div class="mini"><div class="stars">★★★★★</div><p>"The best commercial cleaning service in Calgary. They use green products that don't leave harsh smells, which is vital for our restaurant environment."</p><div class="who"><span class="ini">MC</span><div><b>Michael Chen</b><span>Restaurant Owner</span></div></div></div>
+        <div class="mini"><div class="stars">★★★★★</div><p>"Consistent, professional, and reliable. We never have to worry about the state of our office when we walk in on Monday morning."</p><div class="who"><span class="ini">ET</span><div><b>Emma Thompson</b><span>Office Administrator</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTIMATE -->
+<section class="sec est" id="estimate">
+  <div class="wrap est-grid">
+    <div class="rv">
+      <div class="tag mono">Book Your Free Estimate Consultation</div>
+      <h2 class="display">Get a Professional Estimate</h2>
+      <p class="lead">Experience the Tri-Star difference. Contact us today for a free onsite assessment and detailed quote.</p>
+      <div class="contact-list">
+        <a href="tel:4036803744"><span class="mono">Call Us</span><b>(403) 680-3744</b></a>
+        <div><span class="mono">Service Area</span><b>Calgary &amp; Surrounding Areas</b></div>
+        <div><span class="mono">Emergency</span><b>24/7 · One-Hour Onsite</b></div>
+      </div>
+    </div>
+    <form class="rv" onsubmit="event.preventDefault();this.querySelector('button').textContent='Thank you, we will be in touch';">
+      <h3>Request a Quote</h3>
+      <p class="sub">Tell us about your space and cleaning needs.</p>
+      <div class="f2">
+        <div class="fld"><label for="n">Full Name</label><input id="n" required></div>
+        <div class="fld"><label for="p">Phone</label><input id="p" type="tel" required></div>
+      </div>
+      <div class="fld"><label for="e">Email</label><input id="e" type="email" required></div>
+      <div class="fld"><label for="s">Service Needed</label>
+        <select id="s">
+          <option>Commercial / General Cleaning</option>
+          <option>Carpet &amp; Upholstery Cleaning</option>
+          <option>24/7 Emergency Restoration</option>
+          <option>Floor Care &amp; Restoration</option>
+          <option>Epoxy Services</option>
+          <option>Drying Systems</option>
+          <option>Site &amp; Construction Cleanup</option>
+          <option>Parking Lot &amp; Exterior Maintenance</option>
+        </select>
+      </div>
+      <div class="fld"><label for="m">About Your Space</label><textarea id="m"></textarea></div>
+      <button class="btn btn-blue" type="submit">Request a Quote</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a href="/" class="logo"><span class="l1">TRI-STAR</span><span class="l2">JANITORIAL SERVICE</span></a>
+        <p>Professional cleaning and restoration services you can count on. Serving Calgary and surrounding areas for over 30 years with excellence and integrity.</p>
+      </div>
+      <div>
+        <h4>QUICK LINKS</h4>
+        <ul><li><a href="/">Home</a></li><li><a href="/about">About Us</a></li><li><a href="/latest-work">Our Latest Work</a></li><li><a href="/contact">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>OUR SERVICES</h4>
+        <ul><li><a href="/services/commercial-cleaning">Commercial Cleaning</a></li><li><a href="/services/emergency-restoration">24/7 Emergency Restoration</a></li><li><a href="/services/carpet-upholstery">Carpet &amp; Upholstery</a></li><li><a href="/services/floor-care">Floor Care &amp; Restoration</a></li><li><a href="/services">View All Services</a></li></ul>
+      </div>
+      <div class="fc">
+        <h4>CONTACT INFO</h4>
+        <span class="mono">Call Us</span><b><a href="tel:4036803744">(403) 680-3744</a></b>
+        <span class="mono">Service Area</span><b>Calgary &amp; Surrounding Areas</b>
+      </div>
+    </div>
+  </div>
+  <div class="giant">TRI-STAR</div>
+  <div class="wrap">
+    <div class="fb">
+      <span>© 2026 Tri-Star Janitorial Service. All rights reserved.</span>
+      <span class="legal"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></span>
+      <span class="credit">Design by <a href="https://cleanningdigital.com/" target="_blank" rel="noopener">Cleaning Digital</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// service directory preview
+const rows=document.querySelectorAll('.row'),imgs=document.querySelectorAll('#pic img'),capt=document.getElementById('capt'),capn=document.getElementById('capn');
+rows.forEach(r=>r.addEventListener('mouseenter',()=>{
+  rows.forEach(x=>x.classList.remove('act'));r.classList.add('act');
+  const i=+r.dataset.img;imgs.forEach((im,k)=>im.classList.toggle('on',k===i));
+  capt.textContent=imgs[i].alt;capn.textContent=String(i+1).padStart(2,'0')+' / 08';
+}));
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
